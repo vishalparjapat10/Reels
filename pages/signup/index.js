@@ -2,6 +2,9 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import Image from 'next/image';
 import logo from '../../assets/Instagram-img.png';
+import Button from '@mui/material/Button';
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import IconButton from "@mui/material/IconButton";
 
 function index() {
   return (
@@ -11,6 +14,21 @@ function index() {
             <TextField id="outlined-basic" label="Email" size="small" fullWidth margin="dense" variant="outlined" />
             <TextField id="outlined-basic" label="Password" size="small" fullWidth margin="dense" variant="outlined" type="password" />
             <TextField id="outlined-basic" label="Full Name" size="small" fullWidth margin="dense" variant="outlined" />
+            <Button color="secondary" variant="outlined" component="label" fullWidth size="small">
+              <IconButton color="secondary">
+                <CloudUploadIcon/>
+              </IconButton>
+              Upload Profile Image
+              <input hidden accept="image/*" multiple type="file" />
+            </Button>
+
+            <Button style={{marginTop:"1rem"}} variant='contained' component="label" fullWidth>
+              Sign Up
+            </Button>
+            <div className="tnc">By signing up, you agree to our Terms , Privacy Policy and Cookies Policy .</div>
+            </div>
+        <div className='bottom-card'>
+          Already Have an account ? <span style={{color:"blueviolet"}}>Login</span>
         </div>
     </div>
   )

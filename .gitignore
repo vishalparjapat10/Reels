@@ -30,3 +30,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# my notes
+notes.txt
