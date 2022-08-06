@@ -1,0 +1,35 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8rem;
+    text-align: center;
+    flex-direction: row;
+}
+
+.login-card{
+    width: 25rem;
+    height: 16rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+.bottom-card{
+    width:25rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.insta-mob-bg{
+    background-image: url("../../assets/Insta-mob-bg.png");
+    width: 454px;
+    height: 618px;
+    position: relative;
+}
+
+.carousel-cont{
+    height: auto;
+    position: absolute;
+    top: 50px;
+    left: 86px;
+}
