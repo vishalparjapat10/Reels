@@ -1,3 +1,9 @@
+.feed-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .navbar{
     background-color: white;
     padding-left: 1rem;
@@ -14,6 +20,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.upload-btn{
+    margin-top: 1rem;
 }
 
 @media screen and (max-width:500px) {
