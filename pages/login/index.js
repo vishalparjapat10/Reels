@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import TextField from '@mui/material/TextField';
 import Image from 'next/image';
 import logo from '../../assets/Instagram-img.png';
@@ -10,6 +10,7 @@ import bg3 from '../../assets/bg3.jpg';
 import bg4 from '../../assets/bg4.jpg';
 import {AuthContext} from '../../context/auth';
 import { async } from '@firebase/util';
+import {useRouter} from "next/router";
 
 function index() {
 
@@ -17,9 +18,16 @@ const [email,setEmail] = useState('');
 const [password,setPassword] = useState('');
 const [error,setError] = useState('');
 const [loading,setLoading] = useState(false);
+const router = useRouter();// useRouter is a function of Next.js
 
-const {login} = useContext(AuthContext);
+const {login,user} = useContext(AuthContext);
 
+useEffect(() =>{
+    if(user){
+        // route to feed page
+        router.push("/");
+    }
+},[user])
 let handleClick = async() =>{
     try{
         
@@ -61,7 +69,7 @@ let handleClick = async() =>{
                 }
                 
                 <div style={{color:"blue",marginTop:"0.5rem"}}>Forget Password</div>
-                <Button style={{marginTop:"1rem"}} variant='contained' component="label" fullWidth onClick={handleClick}>
+                <Button style={{marginTop:"1rem"}} variant='contained' component="label" fullWidth onClick={handleClick} disabled={loading}>
                 Log in
                 </Button>
             </div>
