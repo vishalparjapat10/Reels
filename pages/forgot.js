@@ -1,26 +1,26 @@
 import React,{useState,useContext,useEffect} from 'react';
 import TextField from '@mui/material/TextField';
 import Image from 'next/image';
-import logo from '../../assets/Instagram-img.png';
+import logo from '../assets/Instagram-img.png';
 import Button from '@mui/material/Button';
 import { Carousel } from 'react-responsive-carousel';
-import bg1 from '../../assets/bg1.jpg';
-import bg2 from '../../assets/bg2.jpg';
-import bg3 from '../../assets/bg3.jpg';
-import bg4 from '../../assets/bg4.jpg';
-import {AuthContext} from '../../context/auth';
+import bg1 from '../assets/bg1.jpg';
+import bg2 from '../assets/bg2.jpg';
+import bg3 from '../assets/bg3.jpg';
+import bg4 from '../assets/bg4.jpg';
+import {AuthContext} from '../context/auth';
+import { async } from '@firebase/util';
 import {useRouter} from "next/router";
 import Link from 'next/link';
 
-function index() {
+function forgot() {
 
 const [email,setEmail] = useState('');
-const [password,setPassword] = useState('');
 const [error,setError] = useState('');
 const [loading,setLoading] = useState(false);
 const router = useRouter();// useRouter is a function of Next.js
 
-const {login,user} = useContext(AuthContext);
+const {forgetPassword,user} = useContext(AuthContext);
 
 useEffect(() =>{
     if(user){
@@ -32,11 +32,11 @@ let handleClick = async() =>{
     try{
         
         console.log(email);
-        console.log(password);
         setLoading(true);
         setError('');
-        await login(email,password);
-        console.log("logged in");
+        await forgetPassword(email);
+        console.log("email sent");
+        router.push("/login");
     }
     catch(err){
         setError(err.code);
@@ -62,15 +62,12 @@ let handleClick = async() =>{
             <div className='login-card'>
                 <Image src={logo}/>
                 <TextField id="outlined-basic" label="Email" size="small" fullWidth margin="dense" variant="outlined" value={email} onChange= {(e) => setEmail(e.target.value)}/>
-                <TextField id="outlined-basic" label="Password" size="small" fullWidth margin="dense" variant="outlined" type="password" value={password} onChange= {(e) => setPassword(e.target.value)}/>
 
                 { error != "" && 
                     <div style={{color:"red"}}>{error}</div>
                 }
-                <Link href="/forgot"><div style={{color:"blue",marginTop:"0.5rem",cursor:"pointer"}}>Forget Password</div></Link>
-                
                 <Button style={{marginTop:"1rem"}} variant='contained' component="label" fullWidth onClick={handleClick} disabled={loading}>
-                Log in
+                Send Mail
                 </Button>
             </div>
             <div className='bottom-card'>
@@ -84,4 +81,4 @@ let handleClick = async() =>{
   )
 }
 
-export default index
+export default forgot;
