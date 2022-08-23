@@ -13,9 +13,7 @@ function AuthWrapper({children}) {
     // https://firebase.google.com/docs/auth/web/start
     useEffect(() =>{
         onAuthStateChanged(auth,(user) =>{
-            if(user){
-                setUser(user)
-            }
+                setUser(user);
         })
         setLoading(false);
     },[])
