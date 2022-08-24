@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import { auth } from '../firebase';
-import {onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut} from "firebase/auth";
+import {onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut,createUserWithEmailAndPassword} from "firebase/auth";
 import { setUserId } from 'firebase/analytics';
 export const AuthContext = React.createContext();
 // the fucntion of this component is to watch all pages & see if there is need to authenticate i.e all routes will be protected & will be chekced if the user is logged in or not
@@ -32,11 +32,16 @@ function AuthWrapper({children}) {
     function forgetPassword(){
         return sendPasswordResetEmail(auth,email);
     }
+
+    function signup(email,password){
+        return createUserWithEmailAndPassword(auth,email,password)
+    }
     const store = {
         login,
         user,
         logout,
-        forgetPassword
+        forgetPassword,
+        signup
     }
   return (
     <AuthContext.Provider value={store}>
