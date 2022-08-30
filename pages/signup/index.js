@@ -8,8 +8,9 @@ import IconButton from "@mui/material/IconButton";
 import Link from 'next/link';
 import {useRouter} from "next/router";
 import {AuthContext} from '../../context/auth';
-import {storage} from "../../firebase";
+import {storage,db} from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage';
+import { setDoc,doc } from 'firebase/firestore';
 
 function index() {
 
@@ -39,13 +40,10 @@ function index() {
       setError("");
       const userInfo = await signup(email,password);
       console.log(userInfo.user.uid);
-      const metadata = {
-        contentType: 'image/jpeg',
-      };
-
+   
       // Upload file and metadata to the object 'images/mountains.jpg'
       const storageRef = ref(storage, `${userInfo.user.uid}/Profile`);
-      const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on('state_changed',
     (snapshot) => {
@@ -61,8 +59,19 @@ function index() {
     }, 
     () => {
       // Upload completed successfully, now we can get the download URL
-      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
         console.log('File available at', downloadURL);
+        let userData = {
+          fullName,
+          email,
+          password,
+          downloadURL
+        }
+
+        console.log("file available at :",downloadURL);
+        // Add a new document(userInfo.user.uid) in collection "users"
+        await setDoc(doc(db, "users", userInfo.user.uid), userData);
+        console.log("doc added to db");
       });
       }
     );
