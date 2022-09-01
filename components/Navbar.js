@@ -19,7 +19,7 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import { AuthContext } from '../context/auth';
 import {useRouter} from "next/router";
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({userData}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -84,7 +84,7 @@ const ResponsiveAppBar = () => {
             <ExploreIcon fontSize='large' className='nav-icons'/>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" sx={{margin:'0.5rem'}}/>
+                <Avatar alt="Remy Sharp" src={userData.downloadURL} sx={{margin:'0.5rem'}}/>
               </IconButton>
             </Tooltip>
             <Menu

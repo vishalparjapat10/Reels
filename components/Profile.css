@@ -21,3 +21,9 @@
     height: 30rem;
     padding: 0.5rem;
 }
+
+@media only screen and (max-width:500px){
+    .profile-intro{
+        flex-direction: column;
+    }
+}

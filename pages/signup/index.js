@@ -62,6 +62,7 @@ function index() {
       getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
         console.log('File available at', downloadURL);
         let userData = {
+          uid: userInfo.user.uid,
           fullName,
           email,
           password,
@@ -69,7 +70,7 @@ function index() {
         }
 
         console.log("file available at :",downloadURL);
-        // Add a new document(userInfo.user.uid) in collection "users"
+        // db, collection name, document name
         await setDoc(doc(db, "users", userInfo.user.uid), userData);
         console.log("doc added to db");
       });
