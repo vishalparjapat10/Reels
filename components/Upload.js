@@ -4,7 +4,7 @@ import MovieIcon from '@mui/icons-material/Movie';
 import LinearProgress from '@mui/material/LinearProgress';
 import Alert from '@mui/material/Alert';
 import { v4 as uuidv4 } from 'uuid';
-import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { arrayUnion, doc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { storage,db } from '../firebase';
 
@@ -75,9 +75,13 @@ function Upload({userData}) {
         console.log("post", postObj);
         await setDoc(doc(db,"posts",uid),postObj);
         console.log("post added to posts collection");
-        // db, collection name, document name
-        // await setDoc(doc(db, "users", userInfo.user.uid), userData);
-        // console.log("doc added to db");
+        
+        // update in users, posts ka arr
+        await updateDoc(doc(db, "users", userData.uid), {
+          posts: arrayUnion(uid)
+        });
+
+        console.log("posts array to user doc");
       });
       }
     );

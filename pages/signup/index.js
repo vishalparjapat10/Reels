@@ -66,7 +66,8 @@ function index() {
           fullName,
           email,
           password,
-          downloadURL
+          downloadURL,
+          posts:[]
         }
 
         console.log("file available at :",downloadURL);
