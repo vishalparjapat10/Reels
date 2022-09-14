@@ -18,6 +18,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
 import { AuthContext } from '../context/auth';
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 const ResponsiveAppBar = ({userData}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -104,7 +105,9 @@ const ResponsiveAppBar = ({userData}) => {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
+                <Link href='/profile'>
                   <Typography textAlign="center">Profile</Typography>
+                </Link>
               </MenuItem>
               <MenuItem onClick={() => {
                 handleLogout()

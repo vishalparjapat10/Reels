@@ -10,12 +10,12 @@ function profile() {
   const Redirect = () =>{
     const router = useRouter();
     router.push("/login");
+    return null;
   }
   return (
     // this component will only be visible when we are logged in because it is wrapped by auth(see in _app.js)
     <>
-    {user?.uid?
-      <Profile/> : <Redirect/>}
+      {user?.uid ? <Profile/> : <Redirect/>}
     </>
   )
 }

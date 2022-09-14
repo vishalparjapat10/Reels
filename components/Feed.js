@@ -46,7 +46,7 @@ function Feed() {
         <div className='videos-cont'>
           {
             posts.map((post) => (
-              <Post postData={post} />
+              <Post postData={post} userData = {user}/>
             ))
           }
         </div>
