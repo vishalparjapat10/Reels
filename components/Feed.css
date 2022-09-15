@@ -67,10 +67,6 @@
     width: 70%;
 }
 
-/* .avatar-cont>p{
-
-} */
-
 .post-like{
     width: 20%;
     display: flex;
@@ -78,6 +74,23 @@
     justify-content: space-between;
     height: 3rem;
 }
+
+.modal-cont{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.video-modal{
+    height: 100%;
+    width: 50%;
+}
+
+.comments-modal{
+    height: 100%;
+    width: 50%;
+}
+
 @media screen and (max-width:500px) {
     .nav-icons{
         display: none;
