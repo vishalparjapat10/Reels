@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Comment from './Comment';
+import DisplayComments from './DisplayComments';
 
 function Post({postData,userData}) {
     console.log("Postdata -> ",postData);
@@ -79,7 +80,7 @@ function Post({postData,userData}) {
                   </div>
                   <div className='comments-modal'>
                     <Card className='card1'>
-                      
+                      <DisplayComments postData={postData}/>
                     </Card>
                     <Card className='card2'>
                       <Typography sx={{display:"flex",justifyContent:'center',alignItems:'center'}}>
