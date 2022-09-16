@@ -92,7 +92,7 @@ function Post({postData,userData}) {
                       <div className='post-like2'>
                         {/* heart */}
                         <FavoriteIcon onClick={handleLike} style={like ? {color:"red"}: {color:"black"}}/>
-                        <Comment/>
+                        <Comment userData={userData} postData={postData}/>
                       </div>
                      
                     </Card>
