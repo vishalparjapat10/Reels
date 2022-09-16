@@ -15,6 +15,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Comment from './Comment';
 
 function Post({postData,userData}) {
     console.log("Postdata -> ",postData);
@@ -73,56 +75,26 @@ function Post({postData,userData}) {
               >
                 <div className='modal-cont'>
                   <div className='video-modal'>
-                    <video src={postData.postURL}/>
+                    <video autoPlay controls muted src={postData.postURL}/>
                   </div>
                   <div className='comments-modal'>
-                    <Card sx={{ maxWidth: 345 }}>
-                      <CardActionArea>
-                        <CardMedia
-                          component="img"
-                          height="140"
-                          image="/static/images/cards/contemplative-reptile.jpg"
-                          alt="green iguana"
-                        />
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="div">
-                            Lizard
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                      <CardActions>
-                        <Button size="small" color="primary">
-                          Share
-                        </Button>
-                      </CardActions>
+                    <Card className='card1'>
+                      
                     </Card>
-                    <Card sx={{ maxWidth: 345 }}>
-                      <CardActionArea>
-                        <CardMedia
-                          component="img"
-                          height="140"
-                          image="/static/images/cards/contemplative-reptile.jpg"
-                          alt="green iguana"
-                        />
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="div">
-                            Lizard
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                      <CardActions>
-                        <Button size="small" color="primary">
-                          Share
-                        </Button>
-                      </CardActions>
+                    <Card className='card2'>
+                      <Typography sx={{display:"flex",justifyContent:'center',alignItems:'center'}}>
+                        {
+                          postData.likes.length == 0 ?
+                          'Be the first one to like this post' :
+                          `Liked by ${postData.likes.length} users`
+                        }
+                      </Typography>
+                      <div className='post-like2'>
+                        {/* heart */}
+                        <FavoriteIcon onClick={handleLike} style={like ? {color:"red"}: {color:"black"}}/>
+                        <Comment/>
+                      </div>
+                     
                     </Card>
                   </div>
                 </div>
