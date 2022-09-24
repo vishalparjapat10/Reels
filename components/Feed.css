@@ -31,6 +31,7 @@
     border-radius: 15px;
     scrollbar-width: 0;
     overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
 .videos-cont::-webkit-scrollbar{
@@ -50,7 +51,7 @@
     object-fit: contain;
     background-color: black;
     border-radius: 15px;
-    position: relative;
+    scroll-snap-align: start;
 }
 
 .video-info{

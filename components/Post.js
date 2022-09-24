@@ -18,10 +18,12 @@ import { CardActionArea, CardActions } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Comment from './Comment';
 import DisplayComments from './DisplayComments';
+import * as ReactDOM from 'react-dom';
 
 function Post({postData,userData}) {
     console.log("Postdata -> ",postData);
     const [like,setLike] = useState(false);
+    const [isMute, setIsMute] = useState(true);
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -54,9 +56,31 @@ function Post({postData,userData}) {
         })
       }
     }
+
+    const handleMute = () => {
+      if (isMute) {
+        setIsMute(false);
+      }
+      else setIsMute(true);
+    }
+  
+    const handleNextVideo = (e) => {
+      //get the next video 
+      let nextVideo = ReactDOM.findDOMNode(e.target).parentNode.nextSibling;
+      if (nextVideo) {
+  
+        nextVideo.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   return (
     <div className='post-cont'>
-        <video src={postData.postURL}/>
+        <video
+          src={postData.postURL}
+          muted={isMute}
+          onClick={handleMute}
+          onEnded={handleNextVideo}
+          controls
+        />
         <div className='video-info'>
         <div className='avatar-cont'>
             <Avatar alt="Remy Sharp" src={postData.profilePhotoURL} sx={{ margin: "0.5rem" }}/>
