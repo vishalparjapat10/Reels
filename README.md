@@ -1,34 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MoviesApp
 
-## Getting Started
+## Introduction
+Reels is a `next.js` based application which has been developed using **function based components**. [Material UI](https://mui.com/) has been used for styling components. For storing dynamic data & users, **Firebase** has been used. The project was made to get better knowledge of `next.js`,`firebase` & `Material UI`. 
 
-First, run the development server:
+## Description
+It can be think as a clone of Instagram Reels. It includes following features :- 
 
-```bash
-npm run dev
-# or
-yarn dev
+* user can login into app, if he/she new user then there is also a signup page to get start.
+* there is a feed for reels that has uploaded by user , and also there is also a **profile page** where user can see total **number of posts** uploaded , **number of followers**
+* user can like the reel post, comment.
+
+## To run this project locally
+To run this project, download the project locally & follow below steps:
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+$ cd ./reels
+$ npm install
+$ npm run dev
+```
