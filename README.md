@@ -1,4 +1,4 @@
-# MoviesApp
+# Reels
 
 ## Introduction
 Reels is a `next.js` based application which has been developed using **function based components**. [Material UI](https://mui.com/) has been used for styling components. For storing dynamic data & users, **Firebase** has been used. The project was made to get better knowledge of `next.js`,`firebase` & `Material UI`. 
