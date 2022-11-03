@@ -33,3 +33,5 @@ yarn-error.log*
 
 # my notes
 notes.txt
+
+firebase-config.js
